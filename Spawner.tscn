@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cugemvf1yjdda"]
+
+[ext_resource type="Script" path="res://Spawner.cs" id="1_hae3n"]
+[ext_resource type="PackedScene" uid="uid://d3lw8b8ve3202" path="res://Barrel.tscn" id="2_shcqy"]
+[ext_resource type="PackedScene" uid="uid://x3heho85xj7l" path="res://Bone.tscn" id="3_r0dd6"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_hae3n")
+Scenes = [ExtResource("2_shcqy"), ExtResource("3_r0dd6")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

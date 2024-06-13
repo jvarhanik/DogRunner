@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://x3heho85xj7l"]
+
+[ext_resource type="Texture2D" uid="uid://b4l4onvn4p23f" path="res://bone.png" id="1_1c0bv"]
+[ext_resource type="Script" path="res://BoneBehaviour.cs" id="1_4qeu5"]
+[ext_resource type="PackedScene" uid="uid://8oax8cjwnywi" path="res://Pickup.tscn" id="2_6w3iu"]
+[ext_resource type="AudioStream" uid="uid://wly0r7nipfl2" path="res://pickup_coin_free-97175.mp3" id="4_24084"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n84ab"]
+size = Vector2(27, 10)
+
+[node name="Bone" type="Node2D"]
+script = ExtResource("1_4qeu5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.21875, -1.19209e-06)
+scale = Vector2(0.0227126, 0.0243902)
+texture = ExtResource("1_1c0bv")
+
+[node name="Pickup" parent="." instance=ExtResource("2_6w3iu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_n84ab")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_24084")
+
+[connection signal="body_entered" from="Pickup" to="." method="_on_pickup_body_entered"]

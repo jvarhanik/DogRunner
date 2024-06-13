@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6mj4xvkn10vy"]
+
+[ext_resource type="PackedScene" uid="uid://dmqalo74uo78d" path="res://Background.tscn" id="1_l67st"]
+[ext_resource type="PackedScene" uid="uid://cidu4ivqrwxa6" path="res://Foreground.tscn" id="2_kxf5c"]
+[ext_resource type="PackedScene" uid="uid://bulqi5hmsbvfm" path="res://Player.tscn" id="3_14c0x"]
+
+[node name="Game" type="Node2D"]
+scale = Vector2(0.643, 0.555)
+
+[node name="Background" parent="." instance=ExtResource("1_l67st")]
+
+[node name="Foreground" parent="." instance=ExtResource("2_kxf5c")]
+position = Vector2(2, 1004)
+
+[node name="Player" parent="." instance=ExtResource("3_14c0x")]
+position = Vector2(68, 921)
+JumpVelocity = null
+GravityScale = null

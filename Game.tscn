@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6mj4xvkn10vy"]
+
+[ext_resource type="PackedScene" uid="uid://dmqalo74uo78d" path="res://Background.tscn" id="1_l67st"]
+[ext_resource type="PackedScene" uid="uid://cidu4ivqrwxa6" path="res://Foreground.tscn" id="2_kxf5c"]
+[ext_resource type="PackedScene" uid="uid://bulqi5hmsbvfm" path="res://Player.tscn" id="3_14c0x"]
+[ext_resource type="PackedScene" uid="uid://cugemvf1yjdda" path="res://Spawner.tscn" id="4_f12yn"]
+[ext_resource type="Script" path="res://ScoreUI.cs" id="5_goypq"]
+[ext_resource type="Script" path="res://GameoverUI.cs" id="6_7gffi"]
+
+[node name="Game" type="Node2D"]
+scale = Vector2(0.643, 0.555)
+
+[node name="Background" parent="." instance=ExtResource("1_l67st")]
+
+[node name="Foreground" parent="." instance=ExtResource("2_kxf5c")]
+position = Vector2(2, 1004)
+
+[node name="Player" parent="." instance=ExtResource("3_14c0x")]
+position = Vector2(223.95, 918.919)
+
+[node name="Spawner" parent="." instance=ExtResource("4_f12yn")]
+position = Vector2(1917.57, 967.568)
+
+[node name="Score" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Score"]
+layout_mode = 0
+offset_left = 869.362
+offset_top = 1.8018
+offset_right = 1194.36
+offset_bottom = 158.802
+theme_override_font_sizes/normal_font_size = 100
+text = "0
+"
+script = ExtResource("5_goypq")
+
+[node name="Gameover" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_7gffi")
+
+[node name="RestartButton" type="Button" parent="Gameover"]
+layout_mode = 0
+offset_left = 818.451
+offset_top = 431.0
+offset_right = 989.451
+offset_bottom = 485.0
+text = "Restart Game"
+
+[node name="QuitButton" type="Button" parent="Gameover"]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 514.0
+offset_right = 989.0
+offset_bottom = 568.0
+text = "Quit Game
+"
+
+[connection signal="pressed" from="Gameover/RestartButton" to="Gameover" method="_on_restart_button_pressed"]

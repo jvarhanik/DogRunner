@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3lw8b8ve3202"]
+
+[ext_resource type="Script" path="res://BarrelBehaviour.cs" id="1_ltrnc"]
+[ext_resource type="PackedScene" uid="uid://l6eh706tn8xf" path="res://Obstacle.tscn" id="2_vcrqw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjx0t"]
+load_path = "res://.godot/imported/barrel.svg-0be6406c97fe693b429affc268bfe6ab.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r0e2"]
+size = Vector2(59, 95)
+
+[node name="Barrel" type="Node2D"]
+script = ExtResource("1_ltrnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, 0)
+scale = Vector2(0.164957, 0.198726)
+texture = SubResource("CompressedTexture2D_yjx0t")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_vcrqw")]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(1.5, 4.5)
+shape = SubResource("RectangleShape2D_6r0e2")
